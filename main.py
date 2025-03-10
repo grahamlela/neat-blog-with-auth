@@ -70,9 +70,9 @@ def comment_author_only(f):
 # CREATE DATABASE
 class Base(DeclarativeBase):
     pass
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("USERS_DB_URI")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("POSTS_DB_URI")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("COMMENTS_DB_URI")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI", "sqlite:///posts.db")
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("POSTS_DB_URI")
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("COMMENTS_DB_URI")
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
